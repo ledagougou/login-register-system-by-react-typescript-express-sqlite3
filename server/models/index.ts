@@ -32,8 +32,10 @@ class DB {
     password: string,
     role: number
   ) {
-    return this.db.prepare(
-      "INSERT OR REPLACE INTO userTable (username, email, password,role) VALUES (?,?,?,?)"
+    const stmt = this.db.prepare(
+      "INSERT OR REPLACE INTO userTable (username, email, password, role) VALUES (?,?,?,?)"
+    );
+    return stmt.run(username, email, password, role);
     );
   }
 }
